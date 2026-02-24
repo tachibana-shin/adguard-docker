@@ -1,0 +1,43 @@
+# ...
+[build]
+
+[[services]]
+  internal_port = 80
+  protocol = "tcp"
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 5000
+
+[[services]]
+  internal_port = 10443
+  protocol = "tcp"
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+[[services]]
+  internal_port = 10443
+  protocol = "udp"
+  [[services.ports]]
+    port = 443
+
+[[services]]
+  internal_port = 10853
+  protocol = "tcp"
+  [[services.ports]]
+    handlers = ["tls"]
+    port = 853
+
+[[services]]
+  internal_port = 10853
+  protocol = "udp"
+  [[services.ports]]
+    port = 853
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 256
